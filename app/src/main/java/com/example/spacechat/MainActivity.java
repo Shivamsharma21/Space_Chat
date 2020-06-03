@@ -20,8 +20,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(firebaseAuth.getCurrentUser() == null){
-           // Intent loginintent = new Intent(MainActivity.this,login_Activity.class);
+         startLoginActivity();
         }
+    }
+    private void startLoginActivity() {
+        Intent loginintent = new Intent(MainActivity.this,login_Activity.class);
+        startActivity(loginintent);
     }
 
     @Override
