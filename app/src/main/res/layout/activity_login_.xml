@@ -18,10 +18,67 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/WB">
+                android:src="@drawable/WB"
+                android:id="@+id/login_image"
+                android:scaleType="fitCenter"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
 
             </ImageView>
-            
+
+            <EditText
+                android:id="@+id/login_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_image"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/inputs"
+                android:drawableStart="@drawable/email"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="25dp"
+                android:padding="4dp"
+                android:textColor="#121010"
+                android:textColorHint="#674C4C">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_email"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/inputs"
+                android:drawableStart="@drawable/password"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="25dp"
+                android:padding="4dp"
+                android:textColor="#121010"
+                android:textColorHint="#674C4C">
+
+            </EditText>
+
+            <Button
+                android:id="@+id/login_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_password"
+                android:padding="4dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="25dp"
+                android:text="Login"
+                android:textSize="30sp"
+                android:background="@drawable/button">
+
+            </Button>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
