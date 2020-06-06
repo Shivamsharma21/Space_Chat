@@ -12,7 +12,7 @@ public class login_Activity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (firebaseAuth.getCurrentUser() != null){
+        if (firebaseAuth != null){
             startMainACtivity();
         }
     }

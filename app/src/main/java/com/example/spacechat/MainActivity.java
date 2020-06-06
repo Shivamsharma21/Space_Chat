@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(firebaseAuth.getCurrentUser() == null){
+        if(firebaseAuth == null){
          startLoginActivity();
         }
     }
