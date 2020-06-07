@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
     }
     private void startLoginActivity() {
         Intent loginintent = new Intent(MainActivity.this,login_Activity.class);
+        loginintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginintent);
+        finish();
     }
 
     @Override
