@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Setting_Activity">
+
+   <com.mikhaellopez.circularimageview.CircularImageView
+       android:id="@+id/profile_image_"
+       android:layout_width="match_parent"
+       android:layout_height="250dp"
+       android:foregroundGravity="right"
+       android:src="@drawable/profile_image"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentEnd="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginEnd="80dp"
+       android:layout_marginTop="70dp"
+       android:layout_marginStart="85dp"
+       app:civ_border_color="#3CB371"
+       app:civ_border_width="4dp"
+       app:civ_shadow="true"
+       app:civ_shadow_radius="10dp"
+       app:civ_shadow_color="#000000">
+
+   </com.mikhaellopez.circularimageview.CircularImageView>
+
+   <EditText
+       android:id="@+id/user_name_update"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/profile_image_"
+       android:hint="User Name"
+       android:textColorHint="#FFFFFF"
+       android:textAlignment="center"
+       android:drawableLeft="@drawable/edit_profile"
+       android:layout_marginTop="25dp"
+       android:layout_marginStart="15dp"
+       android:layout_marginEnd="15dp"
+       android:padding="6dp"
+       android:background="@drawable/inputs"
+       android:inputType="textMultiLine">
+
+   </EditText>
+
+   <EditText
+       android:id="@+id/Status_update"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/user_name_update"
+       android:hint="Status"
+       android:textColorHint="#FFFFFF"
+       android:textAlignment="center"
+       android:drawableLeft="@drawable/edit_status"
+       android:layout_marginTop="25dp"
+       android:textStyle="bold"
+       android:layout_marginStart="15dp"
+       android:layout_marginEnd="15dp"
+       android:background="@drawable/inputs"
+       android:padding="6dp"
+       android:inputType="textMultiLine">
+
+   </EditText>
+<Button
+    android:id="@+id/update_setting_btn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/Status_update"
+    android:textAllCaps="false"
+    android:textSize="20sp"
+    android:text="Update"
+    android:background="@color/colorPrimary"
+    android:layout_marginTop="25dp"
+    android:textStyle="bold"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:padding="6dp"
+    android:textAlignment="center"
+    >
+
+</Button>
+</RelativeLayout>

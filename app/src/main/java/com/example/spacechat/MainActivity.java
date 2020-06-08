@@ -71,11 +71,16 @@ public class MainActivity extends AppCompatActivity {
              startLoginActivity();
         }
         if (item.getItemId() == R.id.main_find_setting_option){
-            //firebaseAuth.signOut();
+            startSettingActivity();
         }
         if (item.getItemId() == R.id.main_find_friend_option){
 
         }
         return true;
     }
+    private void startSettingActivity() {
+        Intent settingintent = new Intent(MainActivity.this,Setting_Activity.class);
+        startActivity(settingintent);
+    }
+
 }
