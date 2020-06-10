@@ -20,20 +20,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class login_Activity extends AppCompatActivity {
    FirebaseAuth firebaseAuth;
-  //  FirebaseUser firebaseUser;
 
      private Button Login_Button,Login_Phone_Btn;
         private TextView forgetpassword,newuser_register;
          private EditText login_Email,login_password;
           private ProgressDialog progressDialog;
 
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        if (firebaseUser != null){
-            startMainACtivity();
-        }
-    }*/
 
     private void startMainACtivity() {
         Intent MainActivityintent = new Intent(login_Activity.this,MainActivity.class);
@@ -46,7 +38,6 @@ public class login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_);
         firebaseAuth = FirebaseAuth.getInstance();
-       // firebaseUser = firebaseAuth.getCurrentUser();
 
         Initilizer();
          newuser_register.setOnClickListener(new View.OnClickListener() {
