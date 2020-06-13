@@ -1,5 +1,7 @@
 package com.example.spacechat;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -33,8 +36,9 @@ public class GroupsFragment extends Fragment {
     private DatabaseReference databaseReference;
     private ListView listView;
 
-    private ArrayList<String>list_of_group = new ArrayList<>();
-    private ArrayAdapter<String>arrayAdapter;
+    private ArrayList<String> list_of_group = new ArrayList<>();
+    private ArrayAdapter<String> arrayAdapter;
+
     public GroupsFragment() {
         // Required empty public constructor
     }
@@ -45,44 +49,51 @@ public class GroupsFragment extends Fragment {
                              Bundle savedInstanceState) {
         groupFregmentView = inflater.inflate(R.layout.fragment_groups, container, false);
 
-      databaseReference = FirebaseDatabase.getInstance().getReference().child("Groups");
-       InitilizedField();
-       RetriveGroupData();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Groups");
+        InitilizedField();
+        RetriveGroupData();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-       return groupFregmentView;
+                  String GroupName = parent.getItemAtPosition(position).toString();
+                  Intent groupintent= new Intent(getContext(),Group_Chat_Activity.class);
+                  groupintent.putExtra("group name",GroupName);
+                  startActivity(groupintent);
+            }
+        });
+        return groupFregmentView;
     }
 
     private void RetriveGroupData() {
-          databaseReference.addValueEventListener(new ValueEventListener() {
-              @Override
-              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                  Set<String>values = new HashSet<>();
-                  Iterator iterator = (Iterator) dataSnapshot.getChildren().iterator();
+                Set<String> values = new HashSet<>();
+                Iterator iterator = (Iterator) dataSnapshot.getChildren().iterator();
 
-                  while (iterator.hasNext()){
-                         values.add(((DataSnapshot)iterator.next()).getKey());
-                      Log.i("Hello","You Are Here inside Ittrator");
-                         Log.i("Data :",iterator.toString());
-                  }
-                  Log.i("Hello","Uppare LIst_group");
-                        list_of_group.clear();
-                        list_of_group.addAll(values);
-                         arrayAdapter.notifyDataSetChanged();
-                     }
+                while (iterator.hasNext()) {
+                    values.add(((DataSnapshot) iterator.next()).getKey());
+                }
+                list_of_group.clear();
+                list_of_group.addAll(values);
+                arrayAdapter.notifyDataSetChanged();
+            }
 
-              @Override
-              public void onCancelled(@NonNull DatabaseError databaseError) {
-                  Log.d("Error:","Not Getting the Data");
-              }
-          });
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Error:", "Not Getting the Data");
+            }
+        });
     }
 
     private void InitilizedField() {
 
-          listView = (ListView) groupFregmentView.findViewById(R.id.list_view);
-          arrayAdapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,list_of_group);
-          listView.setAdapter(arrayAdapter);
+        listView = (ListView) groupFregmentView.findViewById(R.id.list_view);
+        arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, list_of_group);
+        listView.setAdapter(arrayAdapter);
 
     }
+
 }
