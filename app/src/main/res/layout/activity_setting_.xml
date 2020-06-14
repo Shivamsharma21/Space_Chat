@@ -31,16 +31,16 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_below="@id/profile_image_"
-       android:hint="User Name"
-       android:textColorHint="#FFFFFF"
-       android:textAlignment="center"
-       android:drawableLeft="@drawable/edit_profile"
-       android:layout_marginTop="25dp"
        android:layout_marginStart="15dp"
+       android:layout_marginTop="25dp"
        android:layout_marginEnd="15dp"
-       android:padding="6dp"
        android:background="@drawable/inputs"
-       android:inputType="textMultiLine">
+       android:drawableLeft="@drawable/edit_profile"
+       android:hint="User Name"
+       android:inputType="textMultiLine"
+       android:padding="6dp"
+       android:textAlignment="center"
+       android:textColorHint="#494646">
 
    </EditText>
 
@@ -49,17 +49,17 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_below="@id/user_name_update"
-       android:hint="Status"
-       android:textColorHint="#FFFFFF"
-       android:textAlignment="center"
-       android:drawableLeft="@drawable/edit_status"
-       android:layout_marginTop="25dp"
-       android:textStyle="bold"
        android:layout_marginStart="15dp"
+       android:layout_marginTop="25dp"
        android:layout_marginEnd="15dp"
        android:background="@drawable/inputs"
+       android:drawableLeft="@drawable/edit_status"
+       android:hint="Status"
+       android:inputType="textMultiLine"
        android:padding="6dp"
-       android:inputType="textMultiLine">
+       android:textAlignment="center"
+       android:textColorHint="#494646"
+       android:textStyle="bold">
 
    </EditText>
 <Button

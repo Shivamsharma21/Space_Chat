@@ -1,6 +1,7 @@
 package com.example.spacechat;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,6 +14,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Group_Chat_Activity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
@@ -33,6 +36,42 @@ public class Group_Chat_Activity extends AppCompatActivity {
     private EditText user_message_text;
     private TextView displaymessage;
     private String groupName,currentUserID, UserName,currentDate,currentTime,username;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        GroupNameref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                             if (dataSnapshot.exists()){
+                                 DisplayMessages(dataSnapshot);
+                             }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (dataSnapshot.exists()){
+                    DisplayMessages(dataSnapshot);
+                }
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +91,8 @@ public class Group_Chat_Activity extends AppCompatActivity {
              public void onClick(View v) {
                  SendInfoToDatabase();
                  user_message_text.setText("");
+                 scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+
              }
          });
     }
@@ -111,5 +152,17 @@ void SendInfoToDatabase(){
 
                 groupMessageKeyRef.updateChildren(MessageInfoMap);
             }
-}
+     }
+
+    private void DisplayMessages(DataSnapshot dataSnapshot) {
+       Iterator iterator = dataSnapshot.getChildren().iterator();
+           while(iterator.hasNext()){
+               String ChatMessage = (String) ((DataSnapshot)iterator.next()).getValue();
+               String ChatDate = (String) ((DataSnapshot)iterator.next()).getValue();
+               String ChatTime = (String) ((DataSnapshot)iterator.next()).getValue();
+               String ChatName = (String) ((DataSnapshot)iterator.next()).getValue();
+               displaymessage.append(ChatName + "\n"+ChatMessage+"\n"+ChatDate+"\n"+ChatTime);
+               scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+           }
+    }
 }

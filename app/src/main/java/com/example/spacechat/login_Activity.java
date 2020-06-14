@@ -16,7 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class login_Activity extends AppCompatActivity {
    FirebaseAuth firebaseAuth;
@@ -25,7 +24,6 @@ public class login_Activity extends AppCompatActivity {
         private TextView forgetpassword,newuser_register;
          private EditText login_Email,login_password;
           private ProgressDialog progressDialog;
-
 
     private void startMainACtivity() {
         Intent MainActivityintent = new Intent(login_Activity.this,MainActivity.class);
@@ -54,6 +52,14 @@ public class login_Activity extends AppCompatActivity {
                  AllowUsertoLogin();
              }
          });
+
+        Login_Phone_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent phoneLoginintent = new Intent(login_Activity.this,PhoneLoginActivity.class);
+                startActivity(phoneLoginintent);
+            }
+        });
     }
 
     private void Initilizer() {
