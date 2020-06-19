@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             startSettingActivity();
         }
         if (item.getItemId() == R.id.main_find_friend_option){
-
+            startFindFriendsActivity();
         }
         if(item.getItemId() == R.id.main_Group_chat_option){
             RequestGroupChat();
@@ -166,6 +166,10 @@ public class MainActivity extends AppCompatActivity {
     private void startSettingActivity() {
         Intent settingintent = new Intent(MainActivity.this,Setting_Activity.class);
         startActivity(settingintent);
+    }
+    private void startFindFriendsActivity() {
+        Intent FindFrIntent = new Intent(MainActivity.this,Find_Friends_Activity.class);
+        startActivity(FindFrIntent);
     }
 
 }

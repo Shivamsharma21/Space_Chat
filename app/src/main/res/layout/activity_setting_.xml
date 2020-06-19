@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Setting_Activity">
+    tools:context=".Setting_Activity"
+    >
 
    <com.mikhaellopez.circularimageview.CircularImageView
        android:id="@+id/profile_image_"
