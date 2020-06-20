@@ -164,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startSettingActivity() {
+
         Intent settingintent = new Intent(MainActivity.this,Setting_Activity.class);
         startActivity(settingintent);
     }

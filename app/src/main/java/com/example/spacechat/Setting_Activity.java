@@ -201,8 +201,6 @@ public class Setting_Activity extends AppCompatActivity {
 
                            }
                        });
-                          String Alfa ="Image Data";
-                        Log.d("Download url", Alfa);
                         loadingbar.dismiss();
                         Log.d("Result","OnActivity result,Successfull");
                         Toast.makeText(Setting_Activity.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
