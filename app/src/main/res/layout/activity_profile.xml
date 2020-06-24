@@ -57,4 +57,14 @@
         android:text="Send Message">
 
     </Button>
+    <Button
+        android:id="@+id/decline_message_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/send_message_button"
+        android:layout_marginTop="25dp"
+        android:text="Cancel Request"
+        android:visibility="invisible">
+
+    </Button>
 </RelativeLayout>
