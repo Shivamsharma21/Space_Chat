@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+
+        android:id="@+id/message_profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/profile_image">
+
+
+    </com.mikhaellopez.circularimageview.CircularImageView>
+
+    <TextView
+        android:id="@+id/receiver_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/message_profile_image"
+        android:padding="5dp"
+        android:textSize="14sp"
+        android:text="Receiver Text Here"
+        android:background="@drawable/reciever_message_layout"
+        android:textColor="@android:color/holo_blue_bright">
+
+    </TextView>
+    <TextView
+        android:id="@+id/sender_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:padding="5dp"
+        android:textSize="14sp"
+        android:text="Sender Message"
+        android:background="@drawable/sender_message_layout"
+        android:textColor="@android:color/holo_orange_dark">
+
+    </TextView>
+</RelativeLayout>

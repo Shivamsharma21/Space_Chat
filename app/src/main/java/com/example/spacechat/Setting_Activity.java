@@ -3,6 +3,7 @@ package com.example.spacechat;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -35,20 +36,26 @@ import java.util.HashMap;
 
 public class Setting_Activity extends AppCompatActivity {
      private StorageReference UserImageRef;
-    private FirebaseAuth firebaseAuth;
+     private FirebaseAuth firebaseAuth;
      private DatabaseReference databaseReference;
      private String currentuser;
      private Button UpdateAccountSetting;
      private EditText Username,Userstatus;
      private CircularImageView UserProfile;
      private ProgressDialog loadingbar;
+     private Toolbar setting_Toolbar;
      private static final  int Galarypic =1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_);
+       setting_Toolbar = findViewById(R.id.user_setting_profile_activity); /////Fix later name
+       setSupportActionBar(setting_Toolbar);
+       getSupportActionBar().setDisplayShowCustomEnabled(true);
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       getSupportActionBar().setTitle("Setting");
 
-       firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
        databaseReference = FirebaseDatabase.getInstance().getReference();
        currentuser = firebaseAuth.getCurrentUser().getUid();
        RetriveUserInfo();
@@ -115,12 +122,12 @@ public class Setting_Activity extends AppCompatActivity {
             Userstatus.setError("Status Can't be Empty");
         }
         else{
-            HashMap<String,String>profile_data = new HashMap<>();
+            HashMap<String,Object>profile_data = new HashMap<>();
             profile_data.put("uid",currentuser);
             profile_data.put("name",UserName);
             profile_data.put("status",UserStatus);
 
-            databaseReference.child("Users").child(currentuser).setValue(profile_data).addOnCompleteListener(new OnCompleteListener<Void>() {
+            databaseReference.child("Users").child(currentuser).updateChildren(profile_data).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                   if (task.isSuccessful()){

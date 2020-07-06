@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Setting_Activity"
     >
+   <include
+       android:id="@+id/user_setting_profile_activity"
+       layout="@layout/app_bar_layout">
 
+   </include>
    <com.mikhaellopez.circularimageview.CircularImageView
        android:id="@+id/profile_image_"
        android:layout_width="match_parent"
