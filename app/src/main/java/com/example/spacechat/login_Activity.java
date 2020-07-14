@@ -16,10 +16,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class login_Activity extends AppCompatActivity {
-   FirebaseAuth firebaseAuth;
 
+     FirebaseAuth firebaseAuth;
+     DatabaseReference Userref;
      private Button Login_Button,Login_Phone_Btn;
         private TextView forgetpassword,newuser_register;
          private EditText login_Email,login_password;
@@ -36,7 +40,7 @@ public class login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_);
         firebaseAuth = FirebaseAuth.getInstance();
-
+        Userref = FirebaseDatabase.getInstance().getReference().child("Users");
         Initilizer();
          newuser_register.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -87,9 +91,19 @@ public class login_Activity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
-                    progressDialog.dismiss();
-                    Toast.makeText(login_Activity.this, "Sign In Sucessfull", Toast.LENGTH_SHORT).show();
-                    SendUserToMainActivity();
+                    String CurrentUserId = firebaseAuth.getCurrentUser().getUid();
+                    String DeviceToken = FirebaseInstanceId.getInstance().getToken();
+                    Userref.child(CurrentUserId).child("device_token").setValue(DeviceToken).addOnCompleteListener(
+                            new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    progressDialog.dismiss();
+                                    Toast.makeText(login_Activity.this, "Sign In Sucessfull", Toast.LENGTH_SHORT).show();
+                                    SendUserToMainActivity();
+                                                        }
+                                }
+                            });
 
                 }else{
                     progressDialog.dismiss();

@@ -18,9 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference Useref,Chatref,Contactref;
+    private DatabaseReference Useref,Chatref,Contactref,Notificationref;
     private Button SendMessageButton,DeclineMessageButton;
     private TextView UserName,UserStatus;
     private CircularImageView UserProfileImage;
@@ -34,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         Useref = FirebaseDatabase.getInstance().getReference().child("Users");
         Chatref = FirebaseDatabase.getInstance().getReference().child("Chat Request");
         Contactref = FirebaseDatabase.getInstance().getReference().child("Contacts");
+        Notificationref = FirebaseDatabase.getInstance().getReference().child("Notifications");
         firebaseAuth = FirebaseAuth.getInstance();
         reciverUserID = getIntent().getExtras().get("visit_User_Id").toString();
 
@@ -159,9 +162,20 @@ public class ProfileActivity extends AppCompatActivity {
                          @Override
                          public void onComplete(@NonNull Task<Void> task) {
                            if (task.isSuccessful()){
-                              SendMessageButton.setEnabled(true);
-                           currentState="request_sent";
-                        SendMessageButton.setText("Cancel Request");
+                               HashMap<String,String>NotificationMap = new HashMap<>();
+                               NotificationMap.put("from",senderUserId);
+                               NotificationMap.put("type","request");
+          Notificationref.child(reciverUserID).push().setValue(NotificationMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                   @Override
+                                   public void onComplete(@NonNull Task<Void> task) {
+                                               if (task.isSuccessful()){
+                                                   SendMessageButton.setEnabled(true);
+                                                   currentState="request_sent";
+                                                   SendMessageButton.setText("Cancel Request");
+                                               }
+                                   }
+                               });
+
                            }
                          }
                      });

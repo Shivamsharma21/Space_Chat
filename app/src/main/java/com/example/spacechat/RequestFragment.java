@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -159,8 +160,67 @@ public class RequestFragment extends Fragment {
                                          @Override
                                          public void onCancelled(@NonNull DatabaseError databaseError) {
                                          }
-                                     });
-                                 }
+                                     });//this is Uerrefend
+                                 }else if(type.equals("sent")){
+                                           Button Request_sent_btn = holder.itemView.findViewById(R.id.accept_req_btn);
+                                           Request_sent_btn.setText("Request Send");
+                                           holder.itemView.findViewById(R.id.decline_req_btn).setVisibility(View.INVISIBLE);
+                                           UserRef.child(list_userId).addValueEventListener(new ValueEventListener() {
+                                               @Override
+                                               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                   if (dataSnapshot.hasChild("image")){
+
+                                                       final String userpicture = dataSnapshot.child("image").getValue().toString();
+                                                       Log.d("userpicture",userpicture);
+                                                       Picasso.get().load(userpicture).placeholder(R.drawable.profile_image).into(holder.ProfileImageView);
+
+                                                   }
+                                                   final String username = dataSnapshot.child("name").getValue().toString();
+                                                   Log.d("username",username);
+                                                   final String userstatus = dataSnapshot.child("status").getValue().toString();
+                                                   holder.Username.setText(username);
+                                                   holder.Userstatus.setText(userstatus);
+
+                                                   Log.d("Username",username);
+                                                   holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                                       @Override
+                                                       public void onClick(View v) {
+                                                           CharSequence[] options = new CharSequence[]{
+                                                                   "Decline"
+                                                           };
+                                                           AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                                           builder.setTitle( username+" Send Request");
+                                                           builder.setItems(options, new DialogInterface.OnClickListener() {
+                                                               @Override
+                                                               public void onClick(DialogInterface dialog, int which) {
+                                                                   if (which == 0){
+                                                                       Chatref.child(currentUID).child(list_userId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                           @Override
+                                                                           public void onComplete(@NonNull Task<Void> task) {
+                                                                               if (task.isSuccessful()){
+                                                                                   Chatref.child(list_userId).child(currentUID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                       @Override
+                                                                                       public void onComplete(@NonNull Task<Void> task) {
+                                                                                           if (task.isSuccessful()){
+                                                                                               Toast.makeText(getContext(), "Request Deleted", Toast.LENGTH_SHORT).show();
+                                                                                           }
+                                                                                       }
+                                                                                   });
+                                                                               }
+                                                                           }
+                                                                       });
+                                                                   }
+                                                               }
+                                                           });
+                                                           builder.show();
+                                                       }
+                                                   });
+                                               }
+                                               @Override
+                                               public void onCancelled(@NonNull DatabaseError databaseError) {
+                                               }
+                                           });//this is Uerrefend
+                                       }//this is the end of received
                              }
                         }
 

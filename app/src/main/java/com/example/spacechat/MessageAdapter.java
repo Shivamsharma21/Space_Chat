@@ -1,10 +1,13 @@
 package com.example.spacechat;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +38,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         CircularImageView ProfileImageView;
         TextView SenderMessage,ReceiverMessage;
+        ImageView MessageSenderImageView ,MessageReceiverImageView;
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -42,7 +46,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             ProfileImageView = itemView.findViewById(R.id.message_profile_image);
             SenderMessage = itemView.findViewById(R.id.sender_message);
             ReceiverMessage = itemView.findViewById(R.id.receiver_message);
-
+            MessageSenderImageView = itemView.findViewById(R.id.message_Sender_imageView);
+            MessageReceiverImageView = itemView.findViewById(R.id.message_Receiver_imageView);
         }
     }
 
@@ -58,14 +63,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MessageViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MessageViewHolder holder, final int position) {
 
         String senderMessageID = firebaseAuth.getCurrentUser().getUid();
         Messages messages = userList.get(position);
         String FromUserID = messages.getFrom();
-  //      Log.d("FromUserID",FromUserID);
         String MessageType = messages.getType();
-//        Log.d("MEssageType",MessageType);
+
         UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(FromUserID);
         UserRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -82,6 +86,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
             }
         });
+
+        holder.ProfileImageView.setVisibility(View.GONE);
+
+        holder.SenderMessage.setVisibility(View.GONE);
+        holder.ReceiverMessage.setVisibility(View.GONE);
+
+        holder.MessageReceiverImageView.setVisibility(View.GONE);
+        holder.MessageSenderImageView.setVisibility(View.GONE);
+
         if (MessageType.equals("text")){
             holder.ReceiverMessage.setVisibility(View.INVISIBLE);
             holder.ProfileImageView.setVisibility(View.INVISIBLE);
@@ -90,18 +103,54 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                  holder.SenderMessage.setBackgroundResource(R.drawable.sender_message_layout);
                  holder.SenderMessage.setTextColor(Color.WHITE);
                  holder.SenderMessage.setVisibility(View.VISIBLE);
-                 holder.SenderMessage.setText(messages.getMessage());
+                 holder.SenderMessage.setText(messages.getMessage()+"\n"+messages.getDate()+"-"+messages.getTime());
 
              }else{
 
-                 Log.d("Hey Its Reciver","Receiver Side View");
                  holder.ReceiverMessage.setBackgroundResource(R.drawable.reciever_message_layout);
-         //        holder.SenderMessage.setVisibility(View.INVISIBLE);
                  holder.ReceiverMessage.setTextColor(Color.BLACK);
                  holder.ReceiverMessage.setVisibility(View.VISIBLE);
                  holder.ProfileImageView.setVisibility(View.VISIBLE);
-                 holder.ReceiverMessage.setText(messages.getMessage());
+                 holder.ReceiverMessage.setText(messages.getMessage()+"\n"+messages.getDate()+"-"+messages.getTime());
              }
+        }else if(MessageType.equals("Images")){
+              if (FromUserID.equals(senderMessageID)){
+                holder.MessageSenderImageView.setVisibility(View.VISIBLE);
+                holder.MessageReceiverImageView.setVisibility(View.INVISIBLE);
+                Picasso.get().load(messages.getMessage()).into(holder.MessageSenderImageView);
+              }else{
+                  holder.MessageSenderImageView.setVisibility(View.INVISIBLE);
+                  holder.MessageReceiverImageView.setVisibility(View.VISIBLE);
+                  Picasso.get().load(messages.getMessage()).into(holder.MessageReceiverImageView);
+              }
+        }else{
+            if (FromUserID.equals(senderMessageID)){
+                holder.MessageSenderImageView.setVisibility(View.VISIBLE);
+                holder.MessageReceiverImageView.setVisibility(View.INVISIBLE);
+                holder.MessageSenderImageView.setBackgroundResource(R.drawable.file);
+
+                  holder.itemView.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View v) {
+                          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(userList.get(position).getMessage()));
+                          holder.itemView.getContext().startActivity(intent);
+                      }
+                  });
+
+            }else{
+                holder.MessageSenderImageView.setVisibility(View.INVISIBLE);
+                holder.MessageReceiverImageView.setVisibility(View.VISIBLE);
+                holder.MessageReceiverImageView.setBackgroundResource(R.drawable.file);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(userList.get(position).getMessage()));
+                        holder.itemView.getContext().startActivity(intent);
+                    }
+                });
+
+            }
         }
     }
 

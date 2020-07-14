@@ -1,13 +1,17 @@
 package com.example.spacechat;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -26,24 +30,57 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseUser firebaseUser;
-    private FirebaseAuth firebaseAuth;
+        private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private ViewPager mviewpager;
-     private TabLayout mytablayout;
-      private TabAcessAdapter tabAcessAdapter;
+    private TabLayout mytablayout;
+    private TabAcessAdapter tabAcessAdapter;
+    private String CurrentUserID;
+    int Flag =0;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onStart() {
         super.onStart();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser == null){
          startLoginActivity();
         }
         else{
+               UpdateUserStatus("online");
+                   Flag=1;
+                 Log.d("On Start ",String.valueOf(Flag));
                 VerifyUserExistince();
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null){
+        UpdateUserStatus("offline");
+            Flag =3;
+        Log.d("On Destroy Called",String.valueOf(Flag));
+}
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected void onStop() {
+        super.onStop();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null){
+            UpdateUserStatus("offline");
+            Flag =2;
+            Log.d("onStop",String.valueOf(Flag));
+                 }
+
     }
 
     private void VerifyUserExistince() {
@@ -78,12 +115,25 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    @Override
+    protected void onPause() {
+        super.onPause();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser != null){
+            UpdateUserStatus("offline");
+            Flag =4;
+            Log.d("onPause",String.valueOf(Flag));
+            }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
        Toolbar toolbar =  (Toolbar) findViewById(R.id.main_page_toolbar);
         setSupportActionBar(toolbar);
@@ -105,12 +155,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
         if (item.getItemId() == R.id.main_logout_option){
-             firebaseAuth.signOut();
+            UpdateUserStatus("offline");
+            firebaseAuth.signOut();
              startLoginActivity();
         }
         if (item.getItemId() == R.id.main_find_setting_option){
@@ -173,4 +225,24 @@ public class MainActivity extends AppCompatActivity {
         startActivity(FindFrIntent);
     }
 
+
+   @RequiresApi(api = Build.VERSION_CODES.N)
+   public void UpdateUserStatus(String state){
+       Calendar calendar = Calendar.getInstance();
+
+       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd, yy");
+       String currentDate = simpleDateFormat.format(calendar.getTime());
+
+       SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("hh:mm a");
+       String currentTime = simpleTimeFormat.format(calendar.getTime());
+
+       HashMap<String,Object>OnlineStatus = new HashMap<>();
+       OnlineStatus.put("date",currentDate);
+       OnlineStatus.put("time",currentTime);
+       OnlineStatus.put("state",state);
+
+       CurrentUserID = firebaseAuth.getCurrentUser().getUid();
+       databaseReference.child("Users").child(CurrentUserID).child("userState").updateChildren(OnlineStatus);
+
+    }
 }

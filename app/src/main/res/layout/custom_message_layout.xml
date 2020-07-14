@@ -42,4 +42,21 @@
         android:textColor="@android:color/holo_orange_dark">
 
     </TextView>
+    <ImageView
+        android:id="@+id/message_Sender_imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:scaleType="centerCrop">
+
+    </ImageView>
+    <ImageView
+        android:id="@+id/message_Receiver_imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="40dp"
+        android:layout_alignParentStart="true"
+        android:scaleType="centerCrop">
+
+    </ImageView>
 </RelativeLayout>

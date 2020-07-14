@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -77,11 +78,26 @@ public class ChatFragment extends Fragment {
                                     userImage[0] = dataSnapshot.child("image").getValue().toString();
                                   Picasso.get().load(userImage[0]).into(holder.profileImageView);
                               }
-                                String userstatus =dataSnapshot.child("status").getValue().toString();
-                                final String username = dataSnapshot.child("name").getValue().toString();
+                              String userstatus =dataSnapshot.child("status").getValue().toString();
+                              final String username = dataSnapshot.child("name").getValue().toString();
 
-                                holder.UserStaus.setText(userstatus);
-                                holder.Username.setText(username);
+                             // holder.UserStaus.setText(userstatus);
+                              holder.Username.setText(username);
+
+                              if(dataSnapshot.child("userState").hasChild("state")){
+                                 String state = dataSnapshot.child("userState").child("state").getValue().toString();
+                                  String time = dataSnapshot.child("userState").child("time").getValue().toString();
+                                  String date = dataSnapshot.child("userState").child("date").getValue().toString();
+
+                                    if (state.equals("online")){
+                                    holder.UserStaus.setText("online");
+                                    }
+                                    else if (state.equals("offline")){
+                                    holder.UserStaus.setText("Last seen:"+time+" "+date);
+                                    }
+                                   }else{
+                                  holder.UserStaus.setText("offline");
+                              }
 
                                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                                     @Override

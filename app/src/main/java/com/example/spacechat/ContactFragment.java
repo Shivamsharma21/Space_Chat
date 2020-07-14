@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -67,24 +68,40 @@ public class ContactFragment extends Fragment {
                  UsersRef.child(usersID).addValueEventListener(new ValueEventListener() {
                      @Override
                      public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                          if (dataSnapshot.hasChild("image")){
+                           if (dataSnapshot.exists()){
+                               if(dataSnapshot.child("userState").hasChild("state")){
+                                   String state = dataSnapshot.child("userState").child("state").getValue().toString();
+                                   if (state.equals("online")){
+                                      holder.GreenIndicator.setVisibility(View.VISIBLE);
+                                   }
+                                   else if (state.equals("offline")){
+                                       holder.GreenIndicator.setVisibility(View.INVISIBLE);
+                                   }
+                               }
+                               else {
+                                   holder.GreenIndicator.setVisibility(View.INVISIBLE);
+                               }
+                               if (dataSnapshot.hasChild("image")){
 
-                              String username = dataSnapshot.child("name").getValue().toString();
-                              String userstatus = dataSnapshot.child("status").getValue().toString();
-                              String userPicture = dataSnapshot.child("image").getValue().toString();
+                                   String username = dataSnapshot.child("name").getValue().toString();
+                                   String userstatus = dataSnapshot.child("status").getValue().toString();
+                                   String userPicture = dataSnapshot.child("image").getValue().toString();
 
-                              holder.Username.setText(username);
-                              holder.Userstatus.setText(userstatus);
-                              Picasso.get().load(userPicture).placeholder(R.drawable.profile_image).into(holder.ProfileImageView);
+                                   holder.Username.setText(username);
+                                   holder.Userstatus.setText(userstatus);
+                                   Picasso.get().load(userPicture).placeholder(R.drawable.profile_image).into(holder.ProfileImageView);
 
-                          }else{
-                              String username = dataSnapshot.child("name").getValue().toString();
-                              String userstatus = dataSnapshot.child("status").getValue().toString();
+                               }else{
+                                   String username = dataSnapshot.child("name").getValue().toString();
+                                   String userstatus = dataSnapshot.child("status").getValue().toString();
 
-                              holder.Username.setText(username);
-                              holder.Userstatus.setText(userstatus);
+                                   holder.Username.setText(username);
+                                   holder.Userstatus.setText(userstatus);
 
-                          }
+                               }
+
+                           }
+
                      }
 
                      @Override
@@ -113,11 +130,13 @@ public class ContactFragment extends Fragment {
      public static class ContactViewHolder extends RecyclerView.ViewHolder{
                  TextView Username,Userstatus;
                  CircularImageView ProfileImageView;
+                 ImageView GreenIndicator;
          public ContactViewHolder(@NonNull View itemView) {
              super(itemView);
              Username = itemView.findViewById(R.id.user_name);
              Userstatus = itemView.findViewById(R.id.user_status);
              ProfileImageView = itemView.findViewById(R.id.users_friends_profile);
+             GreenIndicator = itemView.findViewById(R.id.user_online_status);
          }
      }
 }

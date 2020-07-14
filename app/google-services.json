@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "127778288887",
-    "firebase_url": "https://space-chat-bc0ae.firebaseio.com",
-    "project_id": "space-chat-bc0ae",
-    "storage_bucket": "space-chat-bc0ae.appspot.com"
+    "project_number": "799000547095",
+    "firebase_url": "https://spacedata-96f20.firebaseio.com",
+    "project_id": "spacedata-96f20",
+    "storage_bucket": "spacedata-96f20.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:127778288887:android:d17f29afd8f0cee40d4ff2",
+        "mobilesdk_app_id": "1:799000547095:android:f1f2aa4b3719dc74e13152",
         "android_client_info": {
           "package_name": "com.example.spacechat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "127778288887-k0id3qp0rkvftgogooup4e2arpoprlrs.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.spacechat",
-            "certificate_hash": "ab9a8aa4d21e6b9d9e4418e54672c124c040a0a5"
-          }
-        },
-        {
-          "client_id": "127778288887-6tppl7i076gk8c596kto97la4a3t8hng.apps.googleusercontent.com",
+          "client_id": "799000547095-35o9qdejjvvdihuj24e8v4uf515fe7sd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBD7zMRmwKFVePWPX4sGRVtiEru3umrXJU"
+          "current_key": "AIzaSyB4ly7Jii-efFItbhQb9Sops7rG4hb5140"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "127778288887-6tppl7i076gk8c596kto97la4a3t8hng.apps.googleusercontent.com",
+              "client_id": "799000547095-35o9qdejjvvdihuj24e8v4uf515fe7sd.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
