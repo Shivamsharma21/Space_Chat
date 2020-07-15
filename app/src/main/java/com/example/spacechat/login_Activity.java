@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +28,7 @@ public class login_Activity extends AppCompatActivity {
      DatabaseReference Userref;
      private Button Login_Button,Login_Phone_Btn;
         private TextView forgetpassword,newuser_register;
-         private EditText login_Email,login_password;
+         private TextInputLayout login_Email,login_password;
           private ProgressDialog progressDialog;
 
     private void startMainACtivity() {
@@ -84,8 +86,8 @@ public class login_Activity extends AppCompatActivity {
         progressDialog.setMessage("Please Wait");
         progressDialog.show();
 
-        String email = login_Email.getText().toString();
-        String password = login_password.getText().toString();
+        String email = login_Email.getEditText().getText().toString();
+        String password = login_password.getEditText().getText().toString();
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
