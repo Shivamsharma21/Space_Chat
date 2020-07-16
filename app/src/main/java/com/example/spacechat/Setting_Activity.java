@@ -81,23 +81,22 @@ public class Setting_Activity extends AppCompatActivity {
     private void RetriveUserInfo() {
           databaseReference.child("Users").child(currentuser).addValueEventListener(new ValueEventListener() {
               @Override
-              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                  if (dataSnapshot.exists() && dataSnapshot.hasChild("name") && dataSnapshot.hasChild("image") ){
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists() && dataSnapshot.hasChild("name") && dataSnapshot.hasChild("image") ){
                          String retriveusername  = dataSnapshot.child("name").getValue().toString();
-                          String retriveuserimage  = dataSnapshot.child("image").getValue().toString();
-                          String retriveprofilestatus  = dataSnapshot.child("status").getValue().toString();
+                            String retriveuserimage  = dataSnapshot.child("image").getValue().toString();
+                              String retriveprofilestatus  = dataSnapshot.child("status").getValue().toString();
 
-                          Username.setText(retriveusername);
-                          Userstatus.setText(retriveprofilestatus);
+                                Username.setText(retriveusername);
+                            Userstatus.setText(retriveprofilestatus);
                           Picasso.get().load(retriveuserimage).into(UserProfile); //Set the image to image View From Database
 
+                    }else if (dataSnapshot.exists() && dataSnapshot.hasChild("name") && dataSnapshot.hasChild("status")){
+                          String retriveusername  = dataSnapshot.child("name").getValue().toString();
+                            String retriveprofilestatus  = dataSnapshot.child("status").getValue().toString();
 
-                  }else if (dataSnapshot.exists() && dataSnapshot.hasChild("name") && dataSnapshot.hasChild("status")){
-                      String retriveusername  = dataSnapshot.child("name").getValue().toString();
-                      String retriveprofilestatus  = dataSnapshot.child("status").getValue().toString();
-
-                      Username.setText(retriveusername);
-                      Userstatus.setText(retriveprofilestatus);
+                            Username.setText(retriveusername);
+                            Userstatus.setText(retriveprofilestatus);
 
                   }else{
                       Toast.makeText(Setting_Activity.this, "Update Profile", Toast.LENGTH_SHORT).show();

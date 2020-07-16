@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +25,7 @@ public class register_Activity extends AppCompatActivity {
      private FirebaseAuth firebaseAuth;
      private DatabaseReference databaseReference,Userref;
      private Button register_button;
-     private EditText Register_Email,Register_Password;
+     private TextInputLayout Register_Email,Register_Password;
      private TextView Already_Have_Account;
      private ProgressDialog progressDialog;
 
@@ -55,8 +56,8 @@ public class register_Activity extends AppCompatActivity {
           progressDialog.setTitle("Creating a new account");
           progressDialog.setMessage("Please Wait");
           progressDialog.show();
-             String email = Register_Email.getText().toString();
-             String password = Register_Password.getText().toString();
+             String email = Register_Email.getEditText().getText().toString();
+             String password = Register_Password.getEditText().getText().toString();
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

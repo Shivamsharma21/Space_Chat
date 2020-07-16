@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private String CurrentUserID;
     int Flag =0;
 
+    //Update The User Status When App is Start.
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onStart() {
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Update The User Status When App IS Destroy.
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onDestroy() {
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 }
     }
 
+    //Update The User Status When App IS Stop.
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onStop() {
@@ -99,15 +102,17 @@ public class MainActivity extends AppCompatActivity {
 
                        }
                    });
-
-
     }
+
+    // This Method take The User to Setting Activity
     private void StartToSettingActivity(){
         Intent settingintent = new Intent(MainActivity.this,Setting_Activity.class);
         settingintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(settingintent);
         finish();
     }
+
+    //This Method Take User to Login Activity
     private void startLoginActivity() {
         Intent loginintent = new Intent(MainActivity.this,login_Activity.class);
         loginintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -115,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    //Update The User Status When App OnPause.
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onPause() {
@@ -154,6 +160,8 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.options_menu,menu);
         return true;
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -202,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
       builder.show();
     }
 
+    //This Method Only Create The new Group in The Database not In the Application.
+
     private void CreateNewGroup(String name) {
        databaseReference.child("Groups").child(name).setValue("").addOnCompleteListener(new OnCompleteListener<Void>() {
            @Override
@@ -220,6 +230,8 @@ public class MainActivity extends AppCompatActivity {
         Intent settingintent = new Intent(MainActivity.this,Setting_Activity.class);
         startActivity(settingintent);
     }
+
+    //
     private void startFindFriendsActivity() {
         Intent FindFrIntent = new Intent(MainActivity.this,Find_Friends_Activity.class);
         startActivity(FindFrIntent);

@@ -51,7 +51,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         RetriveUserProfile();
        }
+/*
 
+     This Function Retrieve The Details Of the User from the Database,
+     It WILL retrieve the Name,status,image Of the user and Set them
+     to the User Profile
+
+  */
   public void RetriveUserProfile(){
           Useref.child(reciverUserID).addValueEventListener(new ValueEventListener() {
            @Override
@@ -84,6 +90,14 @@ public class ProfileActivity extends AppCompatActivity {
            }
        });
   }
+
+  /*This Function is Maintain the Chat Request
+    1 Recognize the Status OF request In terms OF(sent)and (receive) and Show The Details To user Screen
+    2 After Verify if Receiver Accept The Request IT will Add the Sender Into Its
+      Contact List.
+    3 Also Help tho remove The Request Which is Send By the Receiver
+
+    */
           void ManageChatRequest(){
               Chatref.child(senderUserId).addValueEventListener(new ValueEventListener() {
                   @Override
@@ -152,7 +166,7 @@ public class ProfileActivity extends AppCompatActivity {
                  }
           }
           /////////////////////////////////////////////////////////////////////////////////////////////////////
-
+   // This Function is USed to send The Chat Request to the new Other Users.
      void SendChatRequest(){
          Chatref.child(senderUserId).child(reciverUserID).child("request").setValue("sent").addOnCompleteListener(new OnCompleteListener<Void>() {
              @Override
@@ -185,7 +199,7 @@ public class ProfileActivity extends AppCompatActivity {
      }
 
      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+   // Remove THe Request Of Chat Which is Triggered by Sender
     void RemoveChatRequest(){
         Chatref.child(senderUserId).child(reciverUserID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -208,7 +222,10 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
-
+/*
+Used To accept the Request Send By The Sender User and add the user
+in Contact List
+  */
    void AcceptChatRequest(){
         Contactref.child(senderUserId).child(reciverUserID).setValue("Saved").addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -242,6 +259,9 @@ public class ProfileActivity extends AppCompatActivity {
                }
          });
      }
+
+     // Used for Remove the contact from the Contact List//
+
      void RemoveContact(){
 
          Contactref.child(senderUserId).child(reciverUserID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {

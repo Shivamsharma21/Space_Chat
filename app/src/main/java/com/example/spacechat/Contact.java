@@ -1,5 +1,9 @@
 package com.example.spacechat;
 
+/// A simple Contact Class Which Is Used To Stored THE Details Of User Profile
+//   Which Is Getting From The Firebase Database
+
+
 public class Contact {
     String name,status,image;
 

@@ -127,6 +127,8 @@ public class ContactFragment extends Fragment {
     }
 ////End of On start////////////////////////////////////////////////////////////////////////////////
 
+
+
      public static class ContactViewHolder extends RecyclerView.ViewHolder{
                  TextView Username,Userstatus;
                  CircularImageView ProfileImageView;

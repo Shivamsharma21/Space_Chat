@@ -8,13 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -79,6 +77,15 @@ public class login_Activity extends AppCompatActivity {
     }
 
 
+/*
+        #AllowUsertoLogin
+
+      1 This Method Help User To Login In the Help With Its Mail 'ID' and 'Password'
+      2 This Function Take The Input And stored it after With The Help of Firebase
+        sinInwithEmailPass it will Allow user to Login.
+      3 Also At the Time of Login it Will Stored the Device Token, Which Is Used to Identify
+        the Unique Device On The Network.
+ */
 
     private void AllowUsertoLogin(){
 
@@ -115,6 +122,9 @@ public class login_Activity extends AppCompatActivity {
             }
         });
     }
+
+    //It will Send the User to MainActivity
+
    private void SendUserToMainActivity(){
             Intent sendtoMainActivity = new Intent(login_Activity.this,MainActivity.class);
             sendtoMainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

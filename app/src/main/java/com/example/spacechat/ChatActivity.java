@@ -137,6 +137,8 @@ public class ChatActivity extends AppCompatActivity {
        });
     }
 
+    // This Method Is  Used To Initialize the Various Views,ActionBars,Listeners.
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     void Initilize(){
 
@@ -174,6 +176,13 @@ public class ChatActivity extends AppCompatActivity {
         saveCurrentTime = simpleTimeFormat.format(calendar.getTime());
         SendFilesButton = findViewById(R.id.send_files_btn);
 
+     /*   //This Listener is Used to send The Files To A Friend
+        1 it will Send Image File and Documents.
+        2 It Use AlertDialog Box To decide Which File User Want to send.
+        3 The Checker Variable Hold The Type OF the File
+        4 And The Builder Box Start The Activity with the Type OF
+        user Selected Intent or File Type.
+       */
         SendFilesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,6 +222,11 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+    /*
+    * Here On Start Method is Getting The Message From The Database or the Conversation OF Sender And
+     Receiver And set THE Message Credentials to the Model Class "Message".
+    * ADD those Retrieve Messages to the Message List Of type<Message> class.
+    * */
 
     @Override
     protected void onStart() {
@@ -247,7 +261,18 @@ public class ChatActivity extends AppCompatActivity {
              }
          });
      }
+/*
 
+      1 onActivityResult is Open Save the User Selected File Weather its Image OR Documents to the
+      Firebase Storage
+      2 Also It Will add the Link OF the File File With the Sender Details in form Message Which is
+      a Specific HashMap.
+      3 The Documents Files are Also Considered as A Individual Message That's why it Will also Contain
+      a Unique Key and Stored In The Database Reference Node of "Message" With the Help OF HashMap
+      which is contain The All Details Of Message "time,date" etc.
+
+
+*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -355,6 +380,18 @@ public class ChatActivity extends AppCompatActivity {
         super.startActivityForResult(intent, requestCode, options);
      }
 
+     /*  # SendMessage
+            This Function is The Main Functionality of the this app
+            it will allowUer tho send the Message,First It get The Message from Input
+            then Save the Message to the database To the "Message Reference Node" attached
+            with a Unique Message Key.
+
+            The HashMap is Containing the Message Data With Details Like "To,from,time,date"etc.
+
+            Once the First New Message Is Inserted it Will Update That Same Node Each Time When
+            the User Send THE another Message.
+
+   */
     void SendMessage(){
        String text = InputMessage.getText().toString();
        if (TextUtils.isEmpty(text)){

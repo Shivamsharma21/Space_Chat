@@ -32,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/welcome_note"
                 android:layout_alignParentStart="true"
-                android:drawableStart="@drawable/email"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginTop="70dp"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".register_Activity"
-    android:background="@color/colorAccent">
+    android:background="@drawable/jupiterbackground">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -14,55 +14,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:src="@drawable/signup_photo"
-                android:id="@+id/signup_image"
-                android:scaleType="fitCenter"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true">
-
-            </ImageView>
-
-            <EditText
-                android:id="@+id/signup_email"
+         <com.google.android.material.textfield.TextInputLayout
+             android:id="@+id/signup_email"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="410dp"
+             android:layout_marginStart="10dp"
+             android:layout_marginEnd="10dp"
+             android:theme="@style/myEditTextSytle">
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/signup_image"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/inputs"
-                android:drawableStart="@drawable/email"
+                android:drawableEnd="@drawable/ic_email_white_24"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="25dp"
-                android:padding="4dp"
-                android:textColor="#121010"
-                android:textColorHint="#674C4C">
+                android:padding="10dp">
 
-            </EditText>
+            </com.google.android.material.textfield.TextInputEditText>
+         </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/signup_email"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="30dp"
+                android:theme="@style/myEditTextSytle"
+                >
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:background="@drawable/inputs"
-                android:drawableStart="@drawable/password"
+                android:drawableEnd="@drawable/ic_lock_white_24"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="25dp"
-                android:padding="4dp"
-                android:textColor="#121010"
-                android:textColorHint="#674C4C">
+                android:padding="4dp">
 
-            </EditText>
-
+            </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/signup_btn"
                 android:layout_width="match_parent"
@@ -72,10 +66,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="25dp"
-                android:text="Regidter"
+                android:layout_marginTop="30dp"
+                android:text="Register"
                 android:textSize="30sp"
-                android:background="@drawable/button">
+                android:background="@drawable/bg_button_white">
 
             </Button>
             <TextView
@@ -87,8 +81,8 @@
                 android:layout_below="@id/signup_btn"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="25dp"
-                android:textColor="#121010"
+                android:layout_marginTop="30dp"
+                android:textColor="#ffffff"
                 android:padding="4dp"
                 android:textAlignment="center"
                 >
