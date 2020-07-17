@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -71,9 +72,9 @@ public class Setting_Activity extends AppCompatActivity {
           @Override
           public void onClick(View v) {
               Intent gallaryintent = new Intent();
-              gallaryintent.setAction(Intent.ACTION_GET_CONTENT);
+              gallaryintent.setAction(Intent.ACTION_PICK);
               gallaryintent.setType("image/*");
-              startActivityForResult(gallaryintent,Galarypic);
+              startActivityForResult(Intent.createChooser(gallaryintent,"Shivam Graber"),Galarypic);
           }
       });
     }
@@ -161,12 +162,12 @@ public class Setting_Activity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-               if (requestCode ==Galarypic && resultCode==RESULT_OK && data !=null){
+               if (requestCode ==Galarypic && resultCode== Activity.RESULT_OK && data !=null && data.getData() != null){
                    Log.d("Result","OnActivity result");
                    Uri ImageUri = data.getData();
 
                    // start picker to get image for cropping and then use the image in cropping activity
-                   CropImage.activity()
+                   CropImage.activity(ImageUri)
                            .setGuidelines(CropImageView.Guidelines.ON)
                            .setAspectRatio(1,1)
                            .start(this);
@@ -177,7 +178,6 @@ public class Setting_Activity extends AppCompatActivity {
             Log.d("Result","Crop Activity result");
 
         if (resultCode == RESULT_OK) {
-
             loadingbar.setTitle("Please Wait");
             loadingbar.setMessage("While We Are Uploading Your Profile Picture");
             loadingbar.setCanceledOnTouchOutside(false);
