@@ -81,7 +81,6 @@ public class ChatActivity extends AppCompatActivity {
          firebaseAuth = FirebaseAuth.getInstance();
          currentUserID = firebaseAuth.getCurrentUser().getUid();
 
-
         messageReciverId = getIntent().getExtras().get("Visit_User_ID").toString();
         messageRecivername = getIntent().getExtras().get("Visit_user_name").toString();
         MessageReciverImage = getIntent().getExtras().get("Visit_user_Image").toString();
@@ -113,19 +112,10 @@ public class ChatActivity extends AppCompatActivity {
 
                    if (state.equals("online")){
                        Userlastseen.setText("online");
-                      // if(GreenOnlineIndicator !=null){
-                      // GreenOnlineIndicator = findViewById(R.id.user_online_status);
-                     //  GreenOnlineIndicator.setVisibility(View.VISIBLE);
-                      // }
                    }
                    else if (state.equals("offline")){
                        Userlastseen.setText("Last seen"+time+" "+date);
-                    //   if(GreenOnlineIndicator != null){
-                    //   Log.d("Offline","state Block");
-                  //     GreenOnlineIndicator = findViewById(R.id.user_online_status);
-                //       GreenOnlineIndicator.setVisibility(View.INVISIBLE);
-                      //  }
-                   }
+                      }
                }
 
            }

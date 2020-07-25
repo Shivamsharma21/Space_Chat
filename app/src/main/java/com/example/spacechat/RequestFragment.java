@@ -103,10 +103,13 @@ public class RequestFragment extends Fragment {
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                                                 builder.setTitle( username+" Chat Request");
                                                 Log.d("You are here","On Alert DialogBox");
+                                                //Builder has 2 conditions Accept and Decline the User Request those Value are
+                                                    //Recognized by the '0' and '1'
                                          builder.setItems(options, new DialogInterface.OnClickListener() {
                                              @Override
                                                   public void onClick(DialogInterface dialog, int which) {
                                                       if (which == 0){
+                                                          //if it zero That mean user IS Select the Accept the Request
                                                           ContactRef.child(currentUID).child(list_userId).child("Contact").setValue("Saved").addOnCompleteListener(new OnCompleteListener<Void>() {
                                                              @Override
                                                                 public void onComplete(@NonNull Task<Void> task) {
@@ -135,6 +138,7 @@ public class RequestFragment extends Fragment {
                                                                 }
                                                             });
                                                           }if (which == 1){
+                                                          // if its 1 that's mean user want to decline the Request
                                                      Chatref.child(currentUID).child(list_userId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                                          @Override
                                                          public void onComplete(@NonNull Task<Void> task) {
@@ -160,7 +164,11 @@ public class RequestFragment extends Fragment {
                                          @Override
                                          public void onCancelled(@NonNull DatabaseError databaseError) {
                                          }
-                                     });//this is Uerrefend
+                                     });
+                                           /* here we are checking If the Request IS already is 'sent'
+                                                to the User the we are Stop the User For Sending the request
+                                                again to that one.
+                                            */
                                  }else if(type.equals("sent")){
                                            Button Request_sent_btn = holder.itemView.findViewById(R.id.accept_req_btn);
                                            Request_sent_btn.setText("Request Send");

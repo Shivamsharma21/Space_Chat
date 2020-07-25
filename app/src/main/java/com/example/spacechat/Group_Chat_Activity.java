@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -34,7 +35,7 @@ public class Group_Chat_Activity extends AppCompatActivity {
     private ScrollView scrollView;
     private Toolbar toolbar;
     private EditText user_message_text;
-    private TextView displaymessage;
+    private TextView displaymessage,Group_Chat_Time;
     private String groupName,currentUserID, UserName,currentDate,currentTime,username;
 
     @Override
@@ -103,6 +104,7 @@ public class Group_Chat_Activity extends AppCompatActivity {
         toolbar = findViewById(R.id.group_chat_layout);
         user_message_text = findViewById(R.id.input_group_message);
         displaymessage = findViewById(R.id.textview);
+        Group_Chat_Time = findViewById(R.id.group_chat_time);
         setSupportActionBar(toolbar);
          getSupportActionBar().setTitle(groupName);
 
@@ -157,12 +159,18 @@ void SendInfoToDatabase(){
     private void DisplayMessages(DataSnapshot dataSnapshot) {
        Iterator iterator = dataSnapshot.getChildren().iterator();
            while(iterator.hasNext()){
-               String ChatMessage = (String) ((DataSnapshot)iterator.next()).getValue();
                String ChatDate = (String) ((DataSnapshot)iterator.next()).getValue();
+               String ChatMessage = (String) ((DataSnapshot)iterator.next()).getValue();
+               String ChatName= (String) ((DataSnapshot)iterator.next()).getValue();
                String ChatTime = (String) ((DataSnapshot)iterator.next()).getValue();
-               String ChatName = (String) ((DataSnapshot)iterator.next()).getValue();
-               displaymessage.append(ChatName + "\n"+ChatMessage+"\n"+ChatDate+"\n"+ChatTime);
+               displaymessage.append(ChatMessage+"\n"+ChatTime+"\n");
+              // Group_Chat_Time.setText(ChatTime);
+               Log.d("Chat Message",ChatMessage);
+               Log.d("Chat Date",ChatDate);
+               Log.d("Chat Message",ChatTime);
+               Log.d("Chat Message",ChatName);
                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+
            }
     }
 }

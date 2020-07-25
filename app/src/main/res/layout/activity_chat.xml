@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/holo_purple"
+    android:background="@android:color/black"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -49,9 +49,9 @@
              android:id="@+id/send_files_btn"
              android:layout_width="80dp"
              android:layout_height="50dp"
-             android:src="@drawable/send_files"
+             android:src="@drawable/ic_baseline_attach_file_24"
              android:layout_alignParentStart="true"
-             android:backgroundTint="@android:color/holo_purple"
+             android:backgroundTint="@android:color/black"
              >
 
          </ImageButton>
@@ -63,7 +63,7 @@
             android:layout_height="50dp"
             android:src="@drawable/send_message_button"
             android:layout_alignParentEnd="true"
-            android:backgroundTint="@android:color/holo_purple"
+            android:backgroundTint="@android:color/black"
             >
 
         </ImageButton>

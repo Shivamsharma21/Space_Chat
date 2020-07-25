@@ -37,7 +37,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     static class MessageViewHolder extends RecyclerView.ViewHolder{
 
         CircularImageView ProfileImageView;
-        TextView SenderMessage,ReceiverMessage;
+        TextView SenderMessage,ReceiverMessage,ChatTime;
         ImageView MessageSenderImageView ,MessageReceiverImageView;
 
         public MessageViewHolder(@NonNull View itemView) {
@@ -48,6 +48,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             ReceiverMessage = itemView.findViewById(R.id.receiver_message);
             MessageSenderImageView = itemView.findViewById(R.id.message_Sender_imageView);
             MessageReceiverImageView = itemView.findViewById(R.id.message_Receiver_imageView);
+            ChatTime = itemView.findViewById(R.id.chat_time);
         }
     }
 
@@ -88,7 +89,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         });
 
         holder.ProfileImageView.setVisibility(View.GONE);
-
+        holder.ChatTime.setVisibility(View.GONE);
         holder.SenderMessage.setVisibility(View.GONE);
         holder.ReceiverMessage.setVisibility(View.GONE);
 
@@ -103,15 +104,18 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                  holder.SenderMessage.setBackgroundResource(R.drawable.sender_message_layout);
                  holder.SenderMessage.setTextColor(Color.WHITE);
                  holder.SenderMessage.setVisibility(View.VISIBLE);
-                 holder.SenderMessage.setText(messages.getMessage()+"\n"+messages.getDate()+"-"+messages.getTime());
-
+                 holder.SenderMessage.setText(messages.getMessage());
+                 holder.ChatTime.setVisibility(View.VISIBLE);
+                 holder.ChatTime.setText(messages.getTime());
              }else{
 
                  holder.ReceiverMessage.setBackgroundResource(R.drawable.reciever_message_layout);
                  holder.ReceiverMessage.setTextColor(Color.BLACK);
                  holder.ReceiverMessage.setVisibility(View.VISIBLE);
                  holder.ProfileImageView.setVisibility(View.VISIBLE);
-                 holder.ReceiverMessage.setText(messages.getMessage()+"\n"+messages.getDate()+"-"+messages.getTime());
+                 holder.ReceiverMessage.setText(messages.getMessage());
+                 holder.ChatTime.setVisibility(View.VISIBLE);
+                 holder.ChatTime.setText(messages.getTime());
              }
         }else if(MessageType.equals("Images")){
               if (FromUserID.equals(senderMessageID)){

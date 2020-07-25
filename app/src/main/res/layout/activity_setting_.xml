@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Setting_Activity"
+    android:background="@drawable/setting_profile_background"
     >
    <include
        android:id="@+id/user_setting_profile_activity"
@@ -40,11 +41,11 @@
        android:layout_marginTop="25dp"
        android:layout_marginEnd="15dp"
        android:background="@drawable/inputs"
-       android:drawableLeft="@drawable/edit_profile"
+       android:drawableRight="@drawable/ic_baseline_account_circle_white_24"
        android:hint="User Name"
        android:inputType="textMultiLine"
        android:padding="6dp"
-       android:textAlignment="center"
+       android:textAlignment="viewStart"
        android:textColorHint="#494646">
 
    </EditText>
@@ -58,11 +59,11 @@
        android:layout_marginTop="25dp"
        android:layout_marginEnd="15dp"
        android:background="@drawable/inputs"
-       android:drawableLeft="@drawable/edit_status"
+       android:drawableRight="@drawable/ic_baseline_edit_white_24"
        android:hint="Status"
        android:inputType="textMultiLine"
        android:padding="6dp"
-       android:textAlignment="center"
+       android:textAlignment="viewStart"
        android:textColorHint="#494646"
        android:textStyle="bold">
 

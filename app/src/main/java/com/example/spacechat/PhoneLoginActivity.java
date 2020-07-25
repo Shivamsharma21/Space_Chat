@@ -99,7 +99,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
 
             }
         });
-
+                //Verify The Code Sending by the Firebase Auth to Authenticate the User
            Verifycode.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
@@ -112,7 +112,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
                              loadingbar.setCanceledOnTouchOutside(false);
                              loadingbar.show();
                              PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, VerifyingCode);
-                              signInWithPhoneAuthCredential(credential);
+                              signInWithPhoneAuthCredential(credential); //pass the Credential to Verify device
                          }
                }
            });
@@ -125,7 +125,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
       Phonenumber_input = findViewById(R.id.phonenumber);
       Code_input = findViewById(R.id.verification_code_input);
     }
-
+      // This Method helps  to Sign in with Phone Authentication
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
