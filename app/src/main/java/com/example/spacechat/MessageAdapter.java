@@ -127,11 +127,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                   holder.MessageReceiverImageView.setVisibility(View.VISIBLE);
                   Picasso.get().load(messages.getMessage()).into(holder.MessageReceiverImageView);
               }
-        }else{
+        }else if(MessageType.equals("pdf") || MessageType.equals("docx")){
             if (FromUserID.equals(senderMessageID)){
+                Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/spacedata-96f20.appspot.com/o/Image%20Files%2Fsend_file_icon.png?alt=media&token=485800bc-1e06-4293-acc2-c854a6d0f743")
+                             .into(holder.MessageSenderImageView);
                 holder.MessageSenderImageView.setVisibility(View.VISIBLE);
                 holder.MessageReceiverImageView.setVisibility(View.INVISIBLE);
-                holder.MessageSenderImageView.setBackgroundResource(R.drawable.file);
 
                   holder.itemView.setOnClickListener(new View.OnClickListener() {
                       @Override
@@ -144,7 +145,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             }else{
                 holder.MessageSenderImageView.setVisibility(View.INVISIBLE);
                 holder.MessageReceiverImageView.setVisibility(View.VISIBLE);
-                holder.MessageReceiverImageView.setBackgroundResource(R.drawable.file);
+                Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/spacedata-96f20.appspot.com/o/Image%20Files%2Fsend_file_icon.png?alt=media&token=485800bc-1e06-4293-acc2-c854a6d0f743")
+                        .into(holder.MessageReceiverImageView);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

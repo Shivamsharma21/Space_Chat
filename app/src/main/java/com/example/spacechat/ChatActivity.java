@@ -59,7 +59,7 @@ public class ChatActivity extends AppCompatActivity {
      DatabaseReference MessageRef,RootRef;
      FirebaseAuth firebaseAuth;
      Toolbar ChatToolbar;
-     String messageReciverId,messageRecivername,MessageReciverImage,currentUserID;
+     String messageReciverId,messageRecivername,MessageReciverImage,currentUserID,PdfURL;
      CircularImageView UserImage;
      TextView Username,Userlastseen;
      EditText InputMessage;
@@ -191,20 +191,24 @@ public class ChatActivity extends AppCompatActivity {
                             Intent imageIntent = new Intent();
                             imageIntent.setAction(Intent.ACTION_GET_CONTENT);
                             imageIntent.setType("image/*");
-                            startActivityIfNeeded(imageIntent.createChooser(imageIntent, "Select Image"), 21);
+                            startActivityForResult(imageIntent.createChooser(imageIntent, "Select Image"), 21);
                         }
 
                         if (which == 1) {
-                            checker = "Pdf Files";
+                            checker = "pdf";
                             Intent imageIntent = new Intent();
                             imageIntent.setAction(Intent.ACTION_GET_CONTENT);
                             imageIntent.setType("application/pdf");
-                            startActivityIfNeeded(imageIntent.createChooser(imageIntent, "Select Pdf File"), 21);
+                            startActivityForResult(imageIntent.createChooser(imageIntent, "Select Pdf File"), 21);
 
                         }
 
                         if (which == 2) {
-                            checker = "Ms World";
+                            checker = "docx";
+                            Intent imageIntent = new Intent();
+                            imageIntent.setAction(Intent.ACTION_GET_CONTENT);
+                            imageIntent.setType("application/msword");
+                            startActivityForResult(imageIntent.createChooser(imageIntent, "Select docx File"), 21);
                         }
                     }
                 });
@@ -270,7 +274,7 @@ public class ChatActivity extends AppCompatActivity {
                fileUri = data.getData();
                 if (!checker.equals("Images")){
 
-                    StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Pdf Files");
+                    StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Document Files");
                     final String messageSenderRef = "Message" + "/"+currentUserID +"/"+ messageReciverId;
                     final String messageReciverref = "Message" +"/"+ messageReciverId +"/"+ currentUserID;
 
@@ -278,7 +282,7 @@ public class ChatActivity extends AppCompatActivity {
 
                     final String messagePushId = messageKeyRef.getKey();
 
-                    final StorageReference filePath = storageReference.child(messagePushId +"."+"pdf");
+                    final StorageReference filePath = storageReference.child(messagePushId +"."+checker);
 
                      filePath.putFile(fileUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                          @Override
@@ -286,7 +290,7 @@ public class ChatActivity extends AppCompatActivity {
                              if (task.isSuccessful()){
 
                                  HashMap messageTextBody = new HashMap();
-                                 messageTextBody.put("Message",task.getResult().getStorage().getDownloadUrl().toString());
+                                 messageTextBody.put("Message",filePath.getDownloadUrl().toString());
                                  messageTextBody.put("type",checker);
                                  messageTextBody.put("from",currentUserID);
                                  messageTextBody.put("to",messageReciverId);
@@ -298,7 +302,14 @@ public class ChatActivity extends AppCompatActivity {
                                  messageBodyDetails.put(messageSenderRef+ "/" + messagePushId,messageTextBody);
                                  messageBodyDetails.put(messageReciverref+ "/" +messagePushId,messageTextBody);
 
-                    RootRef.updateChildren(messageTextBody);
+                    RootRef.updateChildren(messageBodyDetails).addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                           if (task.isSuccessful()) {
+                               Toast.makeText(ChatActivity.this, "Pdf Send", Toast.LENGTH_SHORT).show();
+                           }
+                        }
+                    });
 
                              }
                          }
@@ -364,12 +375,6 @@ public class ChatActivity extends AppCompatActivity {
                 }
            }
      }
-
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
-        super.startActivityForResult(intent, requestCode, options);
-     }
-
      /*  # SendMessage
             This Function is The Main Functionality of the this app
             it will allowUer tho send the Message,First It get The Message from Input

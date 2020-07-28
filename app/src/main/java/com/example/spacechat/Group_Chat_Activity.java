@@ -163,12 +163,7 @@ void SendInfoToDatabase(){
                String ChatMessage = (String) ((DataSnapshot)iterator.next()).getValue();
                String ChatName= (String) ((DataSnapshot)iterator.next()).getValue();
                String ChatTime = (String) ((DataSnapshot)iterator.next()).getValue();
-               displaymessage.append(ChatMessage+"\n"+ChatTime+"\n");
-              // Group_Chat_Time.setText(ChatTime);
-               Log.d("Chat Message",ChatMessage);
-               Log.d("Chat Date",ChatDate);
-               Log.d("Chat Message",ChatTime);
-               Log.d("Chat Message",ChatName);
+               displaymessage.append(ChatMessage+"\n"+ChatTime+"\n"+ChatName+"\n");
                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 
            }
