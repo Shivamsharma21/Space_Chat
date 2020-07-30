@@ -3,7 +3,6 @@ package com.example.spacechat;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,8 +77,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 if (dataSnapshot.hasChild("image")){
                     String ReceiverImage = dataSnapshot.child("image").getValue().toString();
                     Picasso.get().load(ReceiverImage).placeholder(R.drawable.profile_image).into(holder.ProfileImageView);
-                Log.d("Image Data",ReceiverImage);
-                }
+                 }
             }
 
             @Override

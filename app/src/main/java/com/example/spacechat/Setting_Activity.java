@@ -163,7 +163,6 @@ public class Setting_Activity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
                if (requestCode ==Galarypic && resultCode== Activity.RESULT_OK && data !=null && data.getData() != null){
-                   Log.d("Result","OnActivity result");
                    Uri ImageUri = data.getData();
 
                    // start picker to get image for cropping and then use the image in cropping activity
@@ -175,7 +174,6 @@ public class Setting_Activity extends AppCompatActivity {
                }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            Log.d("Result","Crop Activity result");
 
         if (resultCode == RESULT_OK) {
             loadingbar.setTitle("Please Wait");
@@ -207,11 +205,9 @@ public class Setting_Activity extends AppCompatActivity {
                            }
                        });
                         loadingbar.dismiss();
-                        Log.d("Result","OnActivity result,Successfull");
                         Toast.makeText(Setting_Activity.this, "Image Uploaded Successfully", Toast.LENGTH_SHORT).show();
                     }else{
                         loadingbar.dismiss();
-                        Log.d("Result","OnActivity UnsucessFull result");
                         String message = task.getException().toString();
                         Toast.makeText(Setting_Activity.this, "Error is Occur During the Event"+message, Toast.LENGTH_SHORT).show();
                     }

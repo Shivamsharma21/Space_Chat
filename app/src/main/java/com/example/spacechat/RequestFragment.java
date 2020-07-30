@@ -59,14 +59,12 @@ public class RequestFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-              Log.d("Inside On start","Onstart");
         FirebaseRecyclerOptions<Contact>options = new FirebaseRecyclerOptions.Builder<Contact>().setQuery(Chatref.child(currentUID),Contact.class).build();//bug
         FirebaseRecyclerAdapter<Contact,RequestChatViewHolder>adapter = new FirebaseRecyclerAdapter<Contact, RequestChatViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final RequestChatViewHolder holder, int position, @NonNull Contact model) {
                    holder.Acceptreq_btn.findViewById(R.id.accept_req_btn).setVisibility(View.VISIBLE);
                    holder.Declinereq_btn.findViewById(R.id.decline_req_btn).setVisibility(View.VISIBLE);
-                   Log.d("On Bind View Holder","Bind");
                     final String list_userId = getRef(position).getKey();
                      DatabaseReference getTyperef = getRef(position).child("request").getRef();
                     getTyperef.addValueEventListener(new ValueEventListener() {
@@ -74,7 +72,6 @@ public class RequestFragment extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                              if (dataSnapshot.exists()){
                                   String type = dataSnapshot.getValue().toString();
-                                  Log.d("Type = ",type);
                                        if (type.equals("received")){
                                      UserRef.child(list_userId).addValueEventListener(new ValueEventListener() {
                                          @Override
@@ -82,17 +79,14 @@ public class RequestFragment extends Fragment {
                                            if (dataSnapshot.hasChild("image")){
 
                                                final String userpicture = dataSnapshot.child("image").getValue().toString();
-                                                      Log.d("userpicture",userpicture);
                                              Picasso.get().load(userpicture).placeholder(R.drawable.profile_image).into(holder.ProfileImageView);
 
                                            }
                                                final String username = dataSnapshot.child("name").getValue().toString();
-                                             Log.d("username",username);
                                            final String userstatus = dataSnapshot.child("status").getValue().toString();
                                                holder.Username.setText(username);
                                                holder.Userstatus.setText(userstatus);
 
-                                               Log.d("Username",username);
                                             holder.itemView.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
@@ -102,13 +96,12 @@ public class RequestFragment extends Fragment {
                                                     };
                                                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                                                 builder.setTitle( username+" Chat Request");
-                                                Log.d("You are here","On Alert DialogBox");
                                                 //Builder has 2 conditions Accept and Decline the User Request those Value are
                                                     //Recognized by the '0' and '1'
-                                         builder.setItems(options, new DialogInterface.OnClickListener() {
-                                             @Override
-                                                  public void onClick(DialogInterface dialog, int which) {
-                                                      if (which == 0){
+                                      builder.setItems(options, new DialogInterface.OnClickListener() {
+                                        @Override
+                                               public void onClick(DialogInterface dialog, int which) {
+                                                   if (which == 0){
                                                           //if it zero That mean user IS Select the Accept the Request
                                                           ContactRef.child(currentUID).child(list_userId).child("Contact").setValue("Saved").addOnCompleteListener(new OnCompleteListener<Void>() {
                                                              @Override
@@ -177,20 +170,16 @@ public class RequestFragment extends Fragment {
                                                @Override
                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                    if (dataSnapshot.hasChild("image")){
-
                                                        final String userpicture = dataSnapshot.child("image").getValue().toString();
-                                                       Log.d("userpicture",userpicture);
                                                        Picasso.get().load(userpicture).placeholder(R.drawable.profile_image).into(holder.ProfileImageView);
 
                                                    }
                                                    final String username = dataSnapshot.child("name").getValue().toString();
-                                                   Log.d("username",username);
                                                    final String userstatus = dataSnapshot.child("status").getValue().toString();
                                                    holder.Username.setText(username);
                                                    holder.Userstatus.setText(userstatus);
 
-                                                   Log.d("Username",username);
-                                                   holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                                    holder.itemView.setOnClickListener(new View.OnClickListener() {
                                                        @Override
                                                        public void onClick(View v) {
                                                            CharSequence[] options = new CharSequence[]{

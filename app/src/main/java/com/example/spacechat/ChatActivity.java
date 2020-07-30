@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -59,7 +60,8 @@ public class ChatActivity extends AppCompatActivity {
      DatabaseReference MessageRef,RootRef;
      FirebaseAuth firebaseAuth;
      Toolbar ChatToolbar;
-     String messageReciverId,messageRecivername,MessageReciverImage,currentUserID,PdfURL;
+     String messageReciverId,messageRecivername,MessageReciverImage,currentUserID;
+     static String PdfURL="";
      CircularImageView UserImage;
      TextView Username,Userlastseen;
      EditText InputMessage;
@@ -288,9 +290,16 @@ public class ChatActivity extends AppCompatActivity {
                          @Override
                          public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                              if (task.isSuccessful()){
+                                 filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                     @Override
+                                     public void onSuccess(Uri uri) {
+                                       PdfURL = uri.toString();
+                                     }
+                                 });
+                                 String PDF_URL = PdfURL;
 
                                  HashMap messageTextBody = new HashMap();
-                                 messageTextBody.put("Message",filePath.getDownloadUrl().toString());
+                                 messageTextBody.put("Message",PDF_URL);
                                  messageTextBody.put("type",checker);
                                  messageTextBody.put("from",currentUserID);
                                  messageTextBody.put("to",messageReciverId);
