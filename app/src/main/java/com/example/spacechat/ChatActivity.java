@@ -258,7 +258,6 @@ public class ChatActivity extends AppCompatActivity {
          });
      }
 /*
-
       1 onActivityResult is Open Save the User Selected File Weather its Image OR Documents to the
       Firebase Storage
       2 Also It Will add the Link OF the File File With the Sender Details in form Message Which is
@@ -266,8 +265,6 @@ public class ChatActivity extends AppCompatActivity {
       3 The Documents Files are Also Considered as A Individual Message That's why it Will also Contain
       a Unique Key and Stored In The Database Reference Node of "Message" With the Help OF HashMap
       which is contain The All Details Of Message "time,date" etc.
-
-
 */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

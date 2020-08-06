@@ -24,7 +24,7 @@
        android:layout_marginEnd="80dp"
        android:layout_marginTop="70dp"
        android:layout_marginStart="85dp"
-       app:civ_border_color="#3CB371"
+       app:civ_border_color="#FF0000"
        app:civ_border_width="4dp"
        app:civ_shadow="true"
        app:civ_shadow_radius="10dp"

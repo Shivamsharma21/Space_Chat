@@ -71,4 +71,17 @@
         android:scaleType="centerCrop">
 
     </ImageView>
+
+    <TextView
+
+        android:id="@+id/rec_chat_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/receiver_message"
+        android:layout_alignStart="@id/receiver_message"
+        android:layout_marginStart="10dp"
+        android:textAlignment="viewStart"
+        android:text="2:90"
+        />
+
 </RelativeLayout>

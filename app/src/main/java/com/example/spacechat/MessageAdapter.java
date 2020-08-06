@@ -36,7 +36,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     static class MessageViewHolder extends RecyclerView.ViewHolder{
 
         CircularImageView ProfileImageView;
-        TextView SenderMessage,ReceiverMessage,ChatTime;
+        TextView SenderMessage,ReceiverMessage,ChatTime,Rec_ChatTime;
         ImageView MessageSenderImageView ,MessageReceiverImageView;
 
         public MessageViewHolder(@NonNull View itemView) {
@@ -48,6 +48,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             MessageSenderImageView = itemView.findViewById(R.id.message_Sender_imageView);
             MessageReceiverImageView = itemView.findViewById(R.id.message_Receiver_imageView);
             ChatTime = itemView.findViewById(R.id.chat_time);
+            Rec_ChatTime = itemView.findViewById(R.id.rec_chat_time);
         }
     }
 
@@ -88,9 +89,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         holder.ProfileImageView.setVisibility(View.GONE);
         holder.ChatTime.setVisibility(View.GONE);
+        holder.Rec_ChatTime.setVisibility(View.GONE);
         holder.SenderMessage.setVisibility(View.GONE);
         holder.ReceiverMessage.setVisibility(View.GONE);
-
         holder.MessageReceiverImageView.setVisibility(View.GONE);
         holder.MessageSenderImageView.setVisibility(View.GONE);
 
@@ -112,8 +113,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                  holder.ReceiverMessage.setVisibility(View.VISIBLE);
                  holder.ProfileImageView.setVisibility(View.VISIBLE);
                  holder.ReceiverMessage.setText(messages.getMessage());
-                 holder.ChatTime.setVisibility(View.VISIBLE);
-                 holder.ChatTime.setText(messages.getTime());
+                 holder.Rec_ChatTime.setVisibility(View.VISIBLE);
+                 holder.Rec_ChatTime.setText(messages.getTime());
              }
         }else if(MessageType.equals("Images")){
               if (FromUserID.equals(senderMessageID)){
