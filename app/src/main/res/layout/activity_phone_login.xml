@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PhoneLoginActivity">
+    tools:context=".PhoneLoginActivity"
+    android:background="@drawable/phone_login1">
 
 
     <EditText
@@ -18,7 +19,7 @@
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/inputs"
-        android:drawableStart="@drawable/phone"
+        android:drawableEnd="@drawable/ic_baseline_phone_android_24"
         android:hint="Enter Number"
         android:padding="8dp"
         android:textAllCaps="false"
