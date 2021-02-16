@@ -17,6 +17,10 @@ inside the Firebase databse.
       
 'Login Activity' After the user is register inside the database it will able to allow to login by its Email and password. 
 
+'Setting Activity' This Activity Allow user to change their Profile With Profile name,Profile Picture and user status On the Application.
+
+'Profile Activity' user to Send and retrive the data OF User from the Database.
+
 
 
 
