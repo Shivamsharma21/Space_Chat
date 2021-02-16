@@ -21,6 +21,7 @@ inside the Firebase databse.
 
 'Profile Activity' user to Send and retrive the data OF User from the Database.
 
+'Contact Fregment' This Fregment Is Stores the Contact List OF the user,Which Tells use Whose are already A friend of the User.
 
 
 
