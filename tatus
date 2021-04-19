@@ -1,0 +1,283 @@
+[33mcommit 380658a38a01cfd5128cf69bfe009f7f25f7198f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Tue Feb 16 12:31:19 2021 +0530
+
+    Update README.md
+
+[33mcommit 3b1b4dd512b0f38b8eb0c9312c1ac6630fe0ad28[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Tue Feb 16 12:18:17 2021 +0530
+
+    Update README.md
+
+[33mcommit ca20364de05dfa089306e95058b8f6551d7f6d93[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Tue Feb 16 12:11:46 2021 +0530
+
+    Update README.md
+
+[33mcommit c1bebd264ddc795e32d53d7afcfebb622fe1d108[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Tue Feb 16 12:06:53 2021 +0530
+
+    Update README.md
+
+[33mcommit 3c44a1805ad214a3663323a132ff03075f4f029e[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Tue Feb 16 11:54:55 2021 +0530
+
+    Update README.md
+
+[33mcommit 54bf1c4bd5d68f3eb52f0a08a96983211fec95dc[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Tue Feb 16 11:53:49 2021 +0530
+
+    Update README.md
+
+[33mcommit dddb3c8a626024d98a93edf350cfe4581f93f294[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Tue Feb 16 11:53:20 2021 +0530
+
+    Update README.md
+
+[33mcommit f18cfe9fb27660b40e57200d9d69fcbbf1f4ab42[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Tue Feb 16 11:52:46 2021 +0530
+
+    Update README.md
+
+[33mcommit e9663f2db6672ce79577636ef7137e3755cfca92[m
+Author: Shivam Sharma <47746874+Shivamsharma21@users.noreply.github.com>
+Date:   Thu Aug 6 20:38:32 2020 +0530
+
+    Create README.md
+
+[33mcommit 4babcafafc1dad8230d49d09993078d387f86a95[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Thu Aug 6 10:08:04 2020 +0530
+
+    1 Ui Improvements(Phone Login).
+
+[33mcommit 0fe26cca6b9014cd8dbdd0efd63ae9e6cc7c66ce[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Thu Aug 6 09:23:36 2020 +0530
+
+    1 Ui Improvements.
+    2 Manifest Error Fixed.
+    3 Time Layout Fixed For Receiver Side.
+
+[33mcommit bce8203e8fda975471eb2be05d4d4a9702540aee[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Thu Jul 30 16:56:23 2020 +0530
+
+    1 Ui Improvements.
+    2 Pdf Sending Bug Fixes.
+
+[33mcommit a0133ddca02d6f993ae235fe308db782aae70ff5[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Tue Jul 28 17:11:57 2020 +0530
+
+    1 Ui Improvements.
+    2 Pdf Sending Bug Fixes.
+
+[33mcommit e8fd3e25d108ddcd5bb55ab28359d405b5638cb7[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Sat Jul 25 13:13:22 2020 +0530
+
+    1 Ui Improvements.
+    2 Group Bug Fix.
+
+[33mcommit 58f2fd2faebdba708eb40a84db37fbcaafcdf658[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Fri Jul 17 07:40:58 2020 +0530
+
+    Image Selector BUg is Fixes.
+
+[33mcommit 37c2db5cf7948a3537f819efbcd89f14c16d0f98[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Thu Jul 16 16:16:58 2020 +0530
+
+    This Commit Only For Adding Comments.
+
+[33mcommit 781afe732b57a41dea63f7b9a1cfa794e5edc395[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Wed Jul 15 06:15:36 2020 +0530
+
+    1 Login Ui is Updated For Intractive Ui/Ux.
+    2 login Design is Under Process.
+
+[33mcommit c1c03e08f06d4267c758f8eab4bd803fe94355e7[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Tue Jul 14 07:08:01 2020 +0530
+
+    1 Sending a Document file and a Image to a user Functionality is added.
+    2 login Design is Under Process.
+
+[33mcommit 73d0c385e1bc6a51d6e69f01ac197200edaa840f[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Mon Jul 6 08:28:06 2020 +0530
+
+    1 Chat Fragment is Updated for display the added user.
+    2 user_display_friends xml is defined for display the List of users.
+    3 Setting_Activity is Updated With Toolbar.
+    4 Chat Fragment Entry In TabAcessAdapter.
+    5 drawable Files Created sender_message.xml,receiver_message.xml,receiver_message_layout.
+    6 layout defined activity_chat_.xml,custom_message_layout.xml,fragment_request.xml,custom_app_bar_layout.
+    7 Chat Activity is Updated For Sending The message Receiving the message,Stored the Message On database with Unique Key.
+    8 MessageAdapter is created to Adapt the Data retrieve by Firebase.
+    9 Message class Is created to Model the List Data
+    10 List Fragment is for Support the Request Occur by users.
+    11 All of Now User Can Chat With Friends In private after they both added there self in Contact.
+    12 Improvements.
+    13 Bug Fixes.
+
+[33mcommit fc4d905ac53a0efdf4dbcdd231096d3b8d9a44a7[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Wed Jun 24 13:08:00 2020 +0530
+
+    1.0 ContactFragment is Updated For Showing the user Added Friends(Accepted request).
+    1.1 Improvements
+
+[33mcommit e5ac4c683602bfb2ef8acad4e45152c013d85ea2[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Wed Jun 24 11:34:25 2020 +0530
+
+    1. User Can Receive friend Request.
+    2 User Can Cancel the Request.
+    3 The Accepted Request Can add inside the Database.
+    4.Bug Fixes.
+    5 Improvements
+
+[33mcommit e38bdeff987c627715ead0bfd7c80280750cc4df[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Sat Jun 20 20:07:35 2020 +0530
+
+    1 Find Friends Activity is added for See Available Users OF App.
+    2 Send Friend Request and Cancel Friend Request Functionality is Added.
+    3 Improvements.
+    4 Bugs Fixes.
+
+[33mcommit 72ac223c5c030522e9cf993c21da2c5c17d8c607[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Fri Jun 19 20:11:13 2020 +0530
+
+    1 User Profile Image Retrieve functionality is added now user can Upload its Image And Get back It from DataBase.
+    2 Work Progress On Find Friends Activity.
+    3 FireBase Bug Fixes.
+    4 Improvements.
+
+[33mcommit 753bc731c3e620220b0dbed5fce33e0d4ed2f50a[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Sun Jun 14 11:07:09 2020 +0530
+
+    1 Group Chat Activity is Added for Chat Inside the Group.
+    2 Login Using Phone Functionality is added Now user can Authenticate his Account Using Phone Number.
+    3 FireBase Error IS resolved.
+
+[33mcommit edaaa6fe75a659d6a11469095cf74e27265600f9[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Sat Jun 13 07:34:10 2020 +0530
+
+    1 Group Chat Activity is Added.
+    2 Now User Can Send Message In Group and that will Stored In Database With A Unique key.
+
+[33mcommit 6a7ecdff846df00f25c546453e57ceb855f42f52[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Wed Jun 10 12:37:30 2020 +0530
+
+    1 Group Created Option Is Added in options_menu.xml
+    2 List View Layout is defined in fragment_groups.xml.
+    3 colors.xml "colorPrimaryDark" is changed.
+    4 Background color is Changed in fragment_groups.xml.
+    5 New Group Created Function is Added Now User Can Created a new Group.
+    6 Verify User Existence.
+    7 User Profile Data retrieve Function is added now User can retrieve its Info from Database
+    8 Improvements.
+    9 ListView Bug's Fixes.
+
+[33mcommit d6d0037b9c741370a31f5ed6eb9d21cfcfc73d14[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Mon Jun 8 17:50:14 2020 +0530
+
+    1 Setting Activity is added for changing User profile Image,User Status.
+    2 (Setting Activity) layout is Designed.
+    3 Bug fixes Of Circular ImageView.
+    4 Improvements.
+
+[33mcommit 2faa638c80f0d6ac5b329ee5bb6b701d59e7ff93[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Sun Jun 7 12:15:44 2020 +0530
+
+    1 Database Connectivity is added for Storing the user data In firebase Database
+    2 circular ImageView Library dependencies added in gradle.
+    3 Bugs Fix
+
+[33mcommit a43f606a3104b10608ee2fb43bdf10716536c6bb[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Sun Jun 7 10:33:14 2020 +0530
+
+    1 Firebase Authentication Bug Fix in login Activity.
+    2 Option Menu in created.
+    3 logout Functionality Of a Signed Account is Added, now user can logout his current account and sign in with other one.
+    3 Bugs Fixes.
+
+[33mcommit 4d22a2520af009da00addce5d7d9f5713e07ac2d[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Sat Jun 6 17:24:44 2020 +0530
+
+    1 Views Are Initialized in register and Login Activity.
+    2 FireBase Create Account functionality added.
+    3 ProgressDialog is Added.
+    4  Improvements in layout.
+    5 Bugs fixes(Firebase).
+
+[33mcommit f30d5b9857eab49057d6778924af36823648b6da[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Sat Jun 6 15:51:49 2020 +0530
+
+    register Activity Modified.
+    FireBase Code Correction.
+    Login Activity Image has ben changed.
+
+[33mcommit 6f17897b28841840f987f46b51dfe0968e9579ca[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Thu Jun 4 07:51:34 2020 +0530
+
+    Register activity is Added.
+    Also Drawable of Login Activity is Added IN drawable folder.
+
+[33mcommit 1095c07547d2650e68117801e474112f12bc4021[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Thu Jun 4 07:49:28 2020 +0530
+
+    Login_Layout Design Complete with -
+    1 Image
+    2 Email input
+    3 Password input
+    3 Login Button
+
+[33mcommit 31a762a45d77cfed21af35757af5807b61d57c58[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Wed Jun 3 22:58:22 2020 +0530
+
+    # path from MainActivity to LoginActivity and vice versa (For current user)
+    #login activity layout define
+    #layout views is been created
+
+[33mcommit 6cddb1e96e34718ae8d155e5bad83e65937a5c19[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Wed Jun 3 19:36:04 2020 +0530
+
+    Login Activity layout(Activity.login_xml) is been created
+
+[33mcommit 10ca7d033686bcdbb9d40737bbd6cd8348c4378a[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Wed Jun 3 19:33:47 2020 +0530
+
+    Login Activity Created
+
+[33mcommit db4583d1e753332cab7c08569f140c472e6320f2[m
+Author: Shivamsharma21 <intelhybrid21@gmail.com>
+Date:   Wed Jun 3 18:08:20 2020 +0530
+
+    Initial commit
