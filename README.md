@@ -5,7 +5,7 @@ App Uses Firebase Database For Data Manipulations,Cloud Storage For Stored the D
 Users Whom Uses this App Are Able To find Inside the App Using Find Friends and the Users can
 add That Person as A friend And Start Private Conversation.
 
-'Chat Activity' Is used for Sending and receiving the data from gthe Firebase server.</br>
+'Chat Activity' Is used for Sending and receiving the data from the Firebase server.</br>
 </br>
 
 'Message Activity' This Activity is The backkbone layer of Messaging.
