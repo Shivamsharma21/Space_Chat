@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".login_Activity"
     android:orientation="vertical"
+   android:background="@drawable/login_gradient"
     >
 
     <ScrollView
@@ -13,10 +14,22 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/faster_one"
+                android:text="Space Chat"
+                android:textSize="50sp">
+
+            </TextView>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login_email"
@@ -60,8 +73,10 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+
                 android:id="@+id/login_btn"
-                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/login_password"
                 android:padding="4dp"
@@ -70,10 +85,25 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="50dp"
                 android:text="Login"
-                android:textSize="30sp"
+                android:textAllCaps="false"
+                android:textSize="20sp"
                 android:background="@drawable/bg_button_white">
 
             </Button>
+
+            <ImageView
+                android:id="@+id/sign_in_button"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+               android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/google_sign_in"/>
+         <LinearLayout
+             android:visibility="gone"
+             android:layout_gravity="center"
+             android:orientation="vertical"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/forget_password"
@@ -120,21 +150,22 @@
             </TextView>
 
             <Button
+                android:layout_gravity="center"
                 android:id="@+id/Using_phone_Button"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Login_using_phone"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="20dp"
                 android:background="@drawable/bg_button_white"
                 android:padding="4dp"
+                android:textAllCaps="false"
+                android:backgroundTint="#08fff9"
                 android:text="Phone Login"
-                android:textSize="30sp">
+                android:textSize="20sp">
 
             </Button>
+         </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
